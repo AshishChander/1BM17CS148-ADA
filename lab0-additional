@@ -1,33 +1,40 @@
-#include <stdio.h>
-int main(int argc, char **argv)
-{
-	int testcase,n,i,j,key,flag=-1;
-	{
-		printf("enter no of testcases:");
-		scanf("%d",&testcase);
-		for(i=0;i<testcase;i++){
-			printf("enter size of array(provide space) key element\n");
-			scanf("%d %d",&n,&key);
-			int a[n];
-			printf("enter the array elements\n");
-			for(j=0;j<n;j++){
-				scanf("%d",&a[j]);
-			}
-			for(j=0;j<n;j++){
-				if(a[j]==key){
-					flag=1;
-				}
-			}
-			if(flag==1){
-				printf("1\n");
-			}
-			else{
-				printf("-1\n");
-			}
-			
-				
-		}
-			
-		
-	}
-}
+#include <stdio.h> 
+int arr[1000];
+int binarySearch(int n, int x) 
+{ 
+
+    int l = 0, r = n-1;
+    int m = l + (r-l) / 2;
+
+	while (l <= r) { 
+		int m = l + (r - l) / 2; 
+        if (arr[m] == x) 
+			return 1; 
+		if (arr[m] < x) 
+			l = m + 1; 
+        else
+			r = m - 1; 
+	} 
+        return -1; 
+} 
+
+int main() 
+{ 
+    
+    int t;
+    scanf("%d",&t);
+    while(t--){
+
+        int n, k;
+        scanf("%d%d",&n,&k);
+        for(int i = 0;i<n;i++){
+            scanf("%d",&arr[i]);
+        }
+        
+      
+        printf("%d\n",binarySearch(n, k));
+
+    }
+
+	return 0; 
+} 
