@@ -1,0 +1,39 @@
+class Bill:
+    def __init__(self):
+        self.consultaion_fee=0
+        self.quantity_list=[]
+        self.price_list=[]
+        self.bill_total=0
+    def calculate_bill_amount(self,fee,quantity,price):
+        self.consultation_fee=fee
+        self.quantity_list=quantity
+        self.price_list=price
+        med_total=0
+        for i in range(0,len(self.quantity_list)):
+            med_total+=self.price_list[i]*self.quantity_list[i]
+        self.bill_total=med_total+self.consultation_fee
+
+    def generate(self,billno):
+        quantity=[]
+        price=[]
+        a=input("enter patient name:")
+        self.name=a
+        self.bill_no=billno
+        b=int(input("enter consultation fee:"))
+        c=int(input("enter no of medicines:"))
+        for i in range(0,c):
+            p=int(input("enter medicine"+str(i+1)+" quantity : "))
+            quantity.append(p)
+            r=int(input("enter price each of medicine "+str(i+1)+" : "))
+            price.append(r)
+        self.calculate_bill_amount(b,quantity,price)
+
+    def disp(self):
+        print("Bill Details:")
+        print("Bill no: "+str(self.bill_no))
+        print("Name :"+str(self.name))
+        print("Total bill amount :"+str(self.bill_total))
+ob=Bill()
+a=int(input("Enter bill no:"))
+ob.generate(a)
+ob.disp()
